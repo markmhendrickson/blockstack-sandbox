@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400');
+
+@blue: rgb(55, 0, 255);
+@purple: #211f6d;
+
+a {
+  color: @blue;
+  text-decoration: none;
+  transition: 0.2s;
+  position: relative;
+
+  &:hover {
+    color: @purple;
+  }
+}
+
+body {
+  background: rgba(55, 0, 255, 0.02);
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: white;
+  color: @blue;
+  cursor: pointer;
+  padding: 1em 3em;
+  font-size: inherit;
+  border: 2px solid @blue;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: 0.2s transform, 0.2s box-shadow;
+
+  &:hover {
+    box-shadow: rgba(37, 0, 105, 0.22) 0px 2px 6px;
+    transform: translateY(-4px);
+  }
+}
+
+code>* {
+  box-sizing: border-box;
+  overflow: auto;
+  width: 100%;
+}
+
+div.subheader {
+  font-size: 1.2em;
+}
+
+form {
+  padding: 4em 0;
+}
+
+img.logo {
+  max-width: 5em;
+  margin-right: 1em;
+  margin-top: 0.1em;
+}
+
+h1, h2 {
+  color: rgb(55, 0, 255);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 300;
+  margin: 1em auto;
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: 3px;
+}
+
+h2 {
+  background: white;
+  border: 1px solid @blue;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  left: 2em;
+  padding: 0.5em 2em;
+  position: absolute;
+  top: -2em;
+}
+
+nav {
+  background: white;
+  border-bottom: 1px dotted @blue;
+  padding: 2em;
+
+  @media (min-width: 500px) {
+    align-items: center;
+    display: flex;
+    height: 2em;
+  }
+
+  img {
+    height: 2em;
+    float: left;
+
+    @media (min-width: 500px) {
+      max-height: 100%;
+    }
+  }
+
+  div {
+    margin: 0 2em;
+
+    &:first-of-type {
+      font-weight: 500;
+    }
+  }
+
+  a {
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+}
+
+section {
+  background: white;
+  border: 1px solid @blue;
+  border-right: none;
+  border-left: none;
+  box-sizing: border-box;
+  margin: 2em 0;
+  padding: 4em 2em;
+  position: relative;
+
+  @media (min-width: 700px) {
+    border: 1px solid @blue;
+    margin: 4em;
+    padding: 4em;
+  }
+
+  h2:first-child + * {
+    margin-top: 2em;
+  }
+
+  &.viewport {
+    align-items: center;
+    display: flex;
+    min-height: ~"calc(100vh - 8em)";
+
+    .center {
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
