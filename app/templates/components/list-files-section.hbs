@@ -1,0 +1,8 @@
+<h2>List files</h2>
+<ul>
+  {{#each files as |file|}}
+    <li>
+      {{#link-to 'file' file.id}}{{file.path}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>

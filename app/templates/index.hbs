@@ -1,13 +1,7 @@
 {{#unless session.authenticated}}
   {{authentication-section}}
 {{else}}
-  <nav>
-    <img class="logo" src="https://s3-us-west-1.amazonaws.com/blockstack-sandbox/blockstack-bucket.svg" />
-    <div>Blockstack Sandbox</div>
-    <a href="#" {{action "deauthenticate"}}>Deauthenticate</a>
-  </nav>
-  <section>
-    <h2>User data</h2>
-    <code>{{formatted-json json=session.userData}}</code>
-  </section>
+  {{user-data-section}}
+  {{put-file-section}}
+  {{list-files-section}}
 {{/unless}}

@@ -5,6 +5,7 @@
 
 a {
   color: @blue;
+  cursor: pointer;
   text-decoration: none;
   transition: 0.2s;
   position: relative;
@@ -24,16 +25,24 @@ body {
 
 button {
   background: white;
+  border-radius: 50px;
   color: @blue;
   cursor: pointer;
   padding: 1em 3em;
   font-size: inherit;
   border: 2px solid @blue;
   font-weight: 600;
-  border-radius: 50px;
-  transition: 0.2s transform, 0.2s box-shadow;
+  outline: none;
+  transition: 0.2s transform, 0.2s box-shadow, 0.2s opacity;
 
-  &:hover {
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+  }
+
+  &:hover, &:focus {
     box-shadow: rgba(37, 0, 105, 0.22) 0px 2px 6px;
     transform: translateY(-4px);
   }
@@ -47,10 +56,67 @@ code>* {
 
 div.subheader {
   font-size: 1.2em;
+  padding-bottom: 3em;
 }
 
 form {
-  padding: 4em 0;
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 40em;
+
+  input, label {
+    border-radius: 50px;
+    display: block;
+    padding: 1em;
+  }
+
+  input {
+    background: rgba(55, 0, 255, 0.06);
+    border: none;
+    font-family: inherit;
+    font-size: 1em;
+    outline: none;
+    padding: 1em;
+    transition: 0.2s border;
+
+    &:focus {
+      border-color: rgba(0,0,0,0.4);
+    }
+  }
+
+  label {
+    font-weight: bold;
+
+    &:not(:first-child) {
+      margin-top: 1em;
+    }
+  }
+
+  button, input, label {
+    border-radius: 0;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  button {
+    margin-top: 2em;
+    position: relative;
+
+    @media (min-width: 700px) {
+      margin-top: 3em;
+    }
+  }
+
+  input:invalid ~ button {
+    cursor: default;
+    opacity: 0.2;
+
+    &:hover, &:focus {
+      box-shadow: none;
+      transform: none;
+    }
+  }
 }
 
 img.logo {
@@ -84,6 +150,16 @@ h2 {
   top: -2em;
 }
 
+h3 {
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+
+  &:not(:first-of-type) {
+    margin-top: 2em;
+  }
+}
+
 nav {
   background: white;
   border-bottom: 1px dotted @blue;
@@ -95,27 +171,42 @@ nav {
     height: 2em;
   }
 
-  img {
+  a.logo {
     height: 2em;
     float: left;
 
     @media (min-width: 500px) {
       max-height: 100%;
     }
-  }
 
-  div {
-    margin: 0 2em;
-
-    &:first-of-type {
-      font-weight: 500;
+    img {
+      height: 100%;
     }
   }
 
   a {
-    font-size: 0.8em;
-    margin-left: auto;
+    display: block;
+    font-weight: 500;
+
+    &:not(.option) {
+      color: inherit;
+    }
+
+    &.option {
+      font-size: 0.8em;
+      font-weight: 400;
+      margin-left: auto;
+      margin-top: 0.5em;
+
+      @media (min-width: 500px) {
+        margin-top: 0;
+      }
+    }
   }
+}
+
+p {
+  line-height: 1.5em;
 }
 
 section {
@@ -124,18 +215,38 @@ section {
   border-right: none;
   border-left: none;
   box-sizing: border-box;
-  margin: 2em 0;
-  padding: 4em 2em;
+  margin: 3em 0;
+  padding: 3em 1em;
   position: relative;
 
   @media (min-width: 700px) {
     border: 1px solid @blue;
     margin: 4em;
-    padding: 4em;
+    padding: 4em 3em;
   }
 
-  h2:first-child + * {
-    margin-top: 2em;
+  &.empty {
+    display: none;
+  }
+
+  &.pending button {
+    cursor: default;
+
+    &:after {
+      content: '\23f3';
+    }
+  }
+
+  &.success button {
+    &:after {
+      content: '\2705';
+    }
+  }
+
+  &.failure button {
+    &:after {
+      content: '\26d4';
+    }
   }
 
   &.viewport {
@@ -146,6 +257,21 @@ section {
     .center {
       text-align: center;
       width: 100%;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 1em 0;
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba(37, 0, 105, 0.05);
     }
   }
 }

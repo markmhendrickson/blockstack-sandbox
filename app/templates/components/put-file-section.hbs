@@ -1,0 +1,8 @@
+<h2>Put file</h2>
+<form {{action "submit" on="submit"}}>
+  <label for="put-file-path">path</label>
+  {{input type="text" id="put-file-path" required=true spellcheck=false value=path}}
+  <label for="put-file-content">content</label>
+  {{input type="text" id="put-file-content" required=true spellcheck=false value=content}}
+  <button type="submit">Put file</button>
+</form>
